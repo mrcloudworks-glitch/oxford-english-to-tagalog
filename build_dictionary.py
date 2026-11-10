@@ -1416,12 +1416,147 @@ def format_entry_html(word: str, senses: list[dict]) -> str:
     return "<hr>".join(blocks) if len(blocks) > 1 else blocks[0]
 
 
+def load_curated_updates(updates_path: Path) -> tuple[dict[str, str], dict[str, set[str]]]:
+    if not updates_path.exists():
+        return {}, {}
+    data = json.loads(updates_path.read_text(encoding="utf-8"))
+    curated_html: dict[str, str] = {}
+    for word, senses in (data.get("entries") or {}).items():
+        w = word.strip().lower()
+        if w and senses:
+            curated_html[w] = format_entry_html(w, senses)
+    curated_syns: dict[str, set[str]] = defaultdict(set)
+    for surf, targets in (data.get("synonyms") or {}).items():
+        s = surf.strip().lower()
+        for t in targets:
+            tl = t.strip().lower()
+            if s and tl and s != tl:
+                curated_syns[s].add(tl)
+    return curated_html, curated_syns
+
+
+def write_stardict_bundle(out_dir: Path, final_entries: dict[str, str], syn_map: dict[str, set[str]]) -> None:
+    # Sort by CrossPoint asciiCaseCmp
+    sorted_words = sorted(
+        final_entries.keys(),
+        key=lambda w: (ascii_lower_bytes(w.encode("utf-8")), w.encode("utf-8")),
+    )
+
+    # Build .dict and .idx
+    dict_parts: list[bytes] = []
+    idx_parts: list[bytes] = []
+    word_to_ordinal: dict[str, int] = {}
+    offset = 0
+
+    for ordinal, word in enumerate(sorted_words):
+        w_bytes = word.encode("utf-8")
+        body_bytes = truncate_utf8(final_entries[word].encode("utf-8"), MAX_DEFINITION_BYTES)
+        dict_parts.append(body_bytes)
+        idx_parts.append(w_bytes + b"\x00" + struct.pack(">II", offset, len(body_bytes)))
+        word_to_ordinal[word] = ordinal
+        offset += len(body_bytes)
+
+    dict_bytes = b"".join(dict_parts)
+    idx_bytes = b"".join(idx_parts)
+
+    # Build .syn (skip self-mappings or surfaces that already have an exact headword)
+    syn_pairs: list[tuple[bytes, int]] = []
+    for surf, targets in syn_map.items():
+        if surf in word_to_ordinal:
+            continue
+        s_bytes = surf.encode("utf-8")
+        if not s_bytes or len(s_bytes) > MAX_HEADWORD_BYTES or b"\x00" in s_bytes:
+            continue
+        for tgt in sorted(targets):
+            if tgt in word_to_ordinal:
+                syn_pairs.append((s_bytes, word_to_ordinal[tgt]))
+    syn_pairs.sort(key=lambda item: (ascii_lower_bytes(item[0]), item[0], item[1]))
+    syn_bytes = b"".join(s_b + b"\x00" + struct.pack(">I", ord_id) for s_b, ord_id in syn_pairs)
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / f"{DICT_STEM}.idx").write_bytes(idx_bytes)
+    (out_dir / f"{DICT_STEM}.syn").write_bytes(syn_bytes)
+    write_dictzip(dict_bytes, out_dir / f"{DICT_STEM}.dict.dz")
+
+    ifo_text = (
+        "StarDict's dict ifo file\n"
+        "version=2.4.2\n"
+        f"bookname={BOOKNAME}\n"
+        f"wordcount={len(sorted_words)}\n"
+        f"synwordcount={len(syn_pairs)}\n"
+        f"idxfilesize={len(idx_bytes)}\n"
+        "sametypesequence=h\n"
+    )
+    (out_dir / f"{DICT_STEM}.ifo").write_text(ifo_text, encoding="utf-8")
+
+    dz_size = (out_dir / f"{DICT_STEM}.dict.dz").stat().st_size
+    print(f"Wrote StarDict files to {out_dir}/:")
+    print(f"  {DICT_STEM}.ifo     ({len(ifo_text)} bytes)")
+    print(f"  {DICT_STEM}.idx     ({len(idx_bytes):,} bytes, {len(sorted_words):,} headwords)")
+    print(f"  {DICT_STEM}.syn     ({len(syn_bytes):,} bytes, {len(syn_pairs):,} synonyms)")
+    print(f"  {DICT_STEM}.dict.dz ({dz_size:,} bytes compressed, {len(dict_bytes):,} bytes uncompressed)")
+
+
+def patch_existing_stardict(out_dir: Path, updates_path: Path) -> None:
+    """Update an existing StarDict folder with curated_updates.json without requiring raw research repos."""
+    idx_bytes = (out_dir / f"{DICT_STEM}.idx").read_bytes()
+    dict_bytes = gzip.decompress((out_dir / f"{DICT_STEM}.dict.dz").read_bytes())
+
+    ord_to_word: list[str] = []
+    final_entries: dict[str, str] = {}
+    pos = 0
+    while pos < len(idx_bytes):
+        nul = idx_bytes.index(0, pos)
+        word = idx_bytes[pos:nul].decode("utf-8")
+        offset, size = struct.unpack_from(">II", idx_bytes, nul + 1)
+        final_entries[word] = dict_bytes[offset : offset + size].decode("utf-8")
+        ord_to_word.append(word)
+        pos = nul + 9
+
+    syn_map: dict[str, set[str]] = defaultdict(set)
+    syn_file = out_dir / f"{DICT_STEM}.syn"
+    if syn_file.exists():
+        syn_bytes = syn_file.read_bytes()
+        pos = 0
+        while pos < len(syn_bytes):
+            nul = syn_bytes.index(0, pos)
+            surf = syn_bytes[pos:nul].decode("utf-8")
+            ord_id = struct.unpack_from(">I", syn_bytes, nul + 1)[0]
+            if 0 <= ord_id < len(ord_to_word):
+                syn_map[surf].add(ord_to_word[ord_id])
+            pos = nul + 5
+
+    curated_html, curated_syns = load_curated_updates(updates_path)
+    added = sum(1 for w in curated_html if w not in final_entries)
+    updated = sum(1 for w in curated_html if w in final_entries)
+    final_entries.update(curated_html)
+
+    new_syns = 0
+    for surf, targets in curated_syns.items():
+        for t in targets:
+            if t in final_entries and t not in syn_map[surf]:
+                syn_map[surf].add(t)
+                new_syns += 1
+
+    print(
+        f"Patched existing StarDict ({out_dir}): "
+        f"+{added} new root entries, {updated} existing entries refined, +{new_syns} .syn mappings."
+    )
+    write_stardict_bundle(out_dir, final_entries, syn_map)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Build Oxford English-to-English-to-Tagalog StarDict for CrossPoint.")
     parser.add_argument("--sources-dir", type=Path, default=Path("/tmp/research"), help="Directory containing downloaded source repos.")
     parser.add_argument("--out-dir", type=Path, default=Path("oxford-en-tl"), help="Output folder for StarDict files.")
+    parser.add_argument("--updates", type=Path, default=Path(__file__).parent / "curated_updates.json", help="Curated entries & synonyms JSON.")
+    parser.add_argument("--patch-existing", action="store_true", help="Apply curated_updates.json directly onto --out-dir StarDict binaries.")
     parser.add_argument("--preview", nargs="*", help="Print sample formatted entries for given words and exit.")
     args = parser.parse_args()
+
+    if args.patch_existing:
+        patch_existing_stardict(args.out_dir, args.updates)
+        return
 
     print("Loading parallel English-Tagalog corpus...")
     pairs, en_index, tl_index, tl_stem_index, pair_en_tokens, pair_tl_stems = load_parallel_corpus(args.sources_dir)
@@ -1536,65 +1671,17 @@ def main():
         f"all 5 fields: {stats['all_5_fields']:,})"
     )
 
-    # Sort by CrossPoint asciiCaseCmp
-    sorted_words = sorted(
-        final_entries.keys(),
-        key=lambda w: (ascii_lower_bytes(w.encode("utf-8")), w.encode("utf-8")),
-    )
+    curated_html, curated_syns = load_curated_updates(args.updates)
+    final_entries.update(curated_html)
 
-    # Build .dict and .idx
-    dict_parts: list[bytes] = []
-    idx_parts: list[bytes] = []
-    word_to_ordinal: dict[str, int] = {}
-    offset = 0
-
-    for ordinal, word in enumerate(sorted_words):
-        w_bytes = word.encode("utf-8")
-        body_bytes = truncate_utf8(final_entries[word].encode("utf-8"), MAX_DEFINITION_BYTES)
-        dict_parts.append(body_bytes)
-        idx_parts.append(w_bytes + b"\x00" + struct.pack(">II", offset, len(body_bytes)))
-        word_to_ordinal[word] = ordinal
-        offset += len(body_bytes)
-
-    dict_bytes = b"".join(dict_parts)
-    idx_bytes = b"".join(idx_parts)
-
-    # Build .syn
     print("Building synonym & inflection index (.syn)...")
-    syn_map = build_synonyms(set(sorted_words), wn_exc)
-    syn_pairs: list[tuple[bytes, int]] = []
-    for surf, targets in syn_map.items():
-        s_bytes = surf.encode("utf-8")
-        for tgt in sorted(targets):
-            if tgt in word_to_ordinal:
-                syn_pairs.append((s_bytes, word_to_ordinal[tgt]))
-    syn_pairs.sort(key=lambda item: (ascii_lower_bytes(item[0]), item[0], item[1]))
-    syn_bytes = b"".join(s_b + b"\x00" + struct.pack(">I", ord_id) for s_b, ord_id in syn_pairs)
+    syn_map = build_synonyms(set(final_entries.keys()), wn_exc)
+    for surf, targets in curated_syns.items():
+        for t in targets:
+            if t in final_entries:
+                syn_map[surf].add(t)
 
-    out_dir: Path = args.out_dir
-    out_dir.mkdir(parents=True, exist_ok=True)
-
-    (out_dir / f"{DICT_STEM}.idx").write_bytes(idx_bytes)
-    (out_dir / f"{DICT_STEM}.syn").write_bytes(syn_bytes)
-    write_dictzip(dict_bytes, out_dir / f"{DICT_STEM}.dict.dz")
-
-    ifo_text = (
-        "StarDict's dict ifo file\n"
-        "version=2.4.2\n"
-        f"bookname={BOOKNAME}\n"
-        f"wordcount={len(sorted_words)}\n"
-        f"synwordcount={len(syn_pairs)}\n"
-        f"idxfilesize={len(idx_bytes)}\n"
-        "sametypesequence=h\n"
-    )
-    (out_dir / f"{DICT_STEM}.ifo").write_text(ifo_text, encoding="utf-8")
-
-    dz_size = (out_dir / f"{DICT_STEM}.dict.dz").stat().st_size
-    print(f"Wrote StarDict files to {out_dir}/:")
-    print(f"  {DICT_STEM}.ifo     ({len(ifo_text)} bytes)")
-    print(f"  {DICT_STEM}.idx     ({len(idx_bytes):,} bytes, {len(sorted_words):,} headwords)")
-    print(f"  {DICT_STEM}.syn     ({len(syn_bytes):,} bytes, {len(syn_pairs):,} synonyms)")
-    print(f"  {DICT_STEM}.dict.dz ({dz_size:,} bytes compressed, {len(dict_bytes):,} bytes uncompressed)")
+    write_stardict_bundle(args.out_dir, final_entries, syn_map)
 
 
 if __name__ == "__main__":

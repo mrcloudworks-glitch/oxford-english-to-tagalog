@@ -22,13 +22,13 @@ Tagalog example: Kumuha siya ng libro sa aklatan.
 
 | Metric | Count |
 | --- | ---: |
-| Headwords (`.idx`) | 16,496 |
+| Headwords (`.idx`) | 16,515 |
 | Oxford 5000 core entries (with CEFR level) | 4,727 |
-| Synonym / inflection / UK↔US mappings (`.syn`) | 33,721 |
-| Entries with English usage example | 12,755 |
-| Entries with Tagalog usage example | 11,740 |
-| Entries with all 5 fields | 10,323 |
-| Compressed dictionary size (`oxford-en-tl.dict.dz`) | 2.26 MB (7.17 MB raw) |
+| Synonym / inflection / UK↔US mappings (`.syn`) | 33,761 |
+| Entries with English usage example | 12,776 |
+| Entries with Tagalog usage example | 11,766 |
+| Entries with all 5 fields | 10,351 |
+| Compressed dictionary size (`oxford-en-tl.dict.dz`) | 2.26 MB (7.18 MB raw) |
 
 ## Installing on CrossPoint Reader
 
@@ -52,17 +52,20 @@ Notes for CrossPoint:
 Verified against CrossPoint's StarDict & DictZip implementation (`Dictionary.cpp`, `DictZip.cpp`, `StringUtils::asciiCaseCmp`):
 - `version=2.4.2`, 32-bit offsets (no `idxoffsetbits=64`), `sametypesequence=h` (clean HTML using `<p>`, `<b>`, `<i>`, `<hr>` — zero IPA/UTF-8 glyphs missing from CrossPoint's built-in fonts).
 - `.idx` and `.syn` keys strictly sorted by ASCII case-insensitive byte order (`asciiCaseCmp`), with case-folded duplicates merged onto single entries and 0-based `.syn` ordinals.
-- `oxford-en-tl.dict.dz` compressed in independent 58,315-byte raw-deflate chunks (`Z_FULL_FLUSH`, `wbits=-15`, 123 chunks) with a standard DictZip `RA` extra field table for fast random-access extraction.
+- `oxford-en-tl.dict.dz` compressed in independent 58,315-byte raw-deflate chunks (`Z_FULL_FLUSH`, `wbits=-15`, 124 chunks) with a standard DictZip `RA` extra field table for fast random-access extraction.
 
 ## Rebuilding & Validating
 
-`build_dictionary.py` expects the source datasets under `/tmp/research` (or pass `--sources-dir <path>`):
+`build_dictionary.py` supports patching an existing `oxford-en-tl/` dictionary with `curated_updates.json`, or performing a full rebuild from source datasets under `/tmp/research` (or pass `--sources-dir <path>`):
 
 ```bash
+# Apply curated_updates.json directly onto existing oxford-en-tl/ binaries
+python3 build_dictionary.py --patch-existing
+
 # Preview specific headwords without writing StarDict files
 python3 build_dictionary.py --preview abandon book bear tyre
 
-# Build oxford-en-tl/
+# Full rebuild of oxford-en-tl/ from source corpora
 python3 build_dictionary.py
 
 # Validate StarDict & DictZip binaries against CrossPoint invariants
