@@ -1,0 +1,645 @@
+{
+  "entries": {
+    "akin": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "1 similar or related in nature or character (often followed by to). 2 related by blood.",
+        "example_en": "What he felt was closer to pity, akin to sorrow.",
+        "tagalog": ["kahawig", "katulad", "kamag-anak"],
+        "example_tl": "Ang naramdaman niya ay kahawig ng malalim na kalungkutan. (What she felt was akin to deep sorrow.)"
+      }
+    ],
+    "befuddle": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "To confuse or perplex completely; make unable to think clearly.",
+        "example_en": "The complicated instructions completely befuddled the newcomers.",
+        "tagalog": ["lituhin", "guluhin ang isip", "tuliruhin"],
+        "example_tl": "Lubos na nilito ng magulong panuto ang mga baguhan. (The complicated instructions completely befuddled the newcomers.)"
+      }
+    ],
+    "disdainful": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Showing contempt or lack of respect; scornful.",
+        "example_en": "He gave a disdainful glance at the messy paperwork.",
+        "tagalog": ["mapanghamak", "mapanlait", "mapagmataas"],
+        "example_tl": "Tiningnan niya nang may mapanghamak na tingin ang magulong mga papel. (He gave the messy papers a disdainful look.)"
+      }
+    ],
+    "drat": [
+      {
+        "pos": "interjection",
+        "cefr": "",
+        "meaning": "Used to express mild anger or annoyance.",
+        "example_en": "Drat, I left my keys inside the house!",
+        "tagalog": ["buwisit", "naku naman"],
+        "example_tl": "Naku naman, naiwan ko sa loob ng bahay ang mga susi ko! (Drat, I left my keys inside the house!)"
+      },
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Used as dratted: annoying or troublesome.",
+        "example_en": "This dratted rain won't stop falling.",
+        "tagalog": ["nakakainis", "nakakabuwisit"],
+        "example_tl": "Ayaw tumigil ng nakakainis na ulang ito. (This dratted rain won't stop.)"
+      }
+    ],
+    "gormless": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Chiefly British, informal: lacking intelligence, vitality, or awareness; foolish.",
+        "example_en": "He stood there with a gormless expression on his face.",
+        "tagalog": ["tuliro", "tanga", "walang kamuwangan"],
+        "example_tl": "Nakatayo lamang siya roon na tila tuliro at walang ideya sa nangyayari. (He just stood there looking gormless, with no idea what was happening.)"
+      }
+    ],
+    "henceforth": [
+      {
+        "pos": "adverb",
+        "cefr": "",
+        "meaning": "From this time onward; from now on.",
+        "example_en": "Henceforth, all library books must be returned within two weeks.",
+        "tagalog": ["mula ngayon", "magmula ngayon", "buhat ngayon"],
+        "example_tl": "Mula ngayon, mas maingat na siyang magpapasya. (Henceforth, she will make decisions more carefully.)"
+      }
+    ],
+    "horde": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "A very large crowd or group of people, often moving in a disorderly way.",
+        "example_en": "Hordes of commuters rushed toward the train station.",
+        "tagalog": ["kawan", "pulutong", "malaking pangkat"],
+        "example_tl": "Isang malaking pulutong ng mga pasahero ang nagmamadali patungo sa estasyon. (A horde of passengers rushed toward the station.)"
+      }
+    ],
+    "impending": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "About to happen soon, especially something unpleasant or threatening.",
+        "example_en": "Dark clouds warned everyone of the impending storm.",
+        "tagalog": ["nalalapit", "nagbabanta", "paparating"],
+        "example_tl": "Nagbabala ang maiitim na ulap tungkol sa paparating na bagyo. (Dark clouds warned of the impending storm.)"
+      }
+    ],
+    "kowtow": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "1 to act in an excessively obedient or submissive way to please someone powerful. 2 historically, to kneel and touch the ground with the forehead in respect.",
+        "example_en": "She refused to kowtow to unfair demands.",
+        "tagalog": ["yumukod", "sumipsip", "magpakumbaba nang labis"],
+        "example_tl": "Tumanggi siyang yumukod at sumunod sa mga hindi makatarungang utos. (She refused to kowtow to unfair demands.)"
+      },
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "A deep bow made by kneeling and touching the forehead to the ground.",
+        "example_en": "Guests offered a respectful kowtow before the elder.",
+        "tagalog": ["malalim na pagyukod"],
+        "example_tl": "Nagbigay sila ng malalim na pagyukod bilang tanda ng paggalang. (They made a deep kowtow as a sign of respect.)"
+      }
+    ],
+    "levity": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "Humor or lack of seriousness, especially during a serious or formal situation.",
+        "example_en": "His joke brought a brief moment of levity to the tense meeting.",
+        "tagalog": ["kagaanan ng loob", "pagbibiro", "kawalan ng kaseryosohan"],
+        "example_tl": "Nagdala ng kaunting kagaanan ng loob ang biro niya sa seryosong pulong. (His joke brought a touch of levity to the serious meeting.)"
+      }
+    ],
+    "plonk": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "To set, put, or drop something down heavily and carelessly.",
+        "example_en": "He plonked the heavy suitcase down on the floor.",
+        "tagalog": ["ibagsak", "ilapag nang pabigla"],
+        "example_tl": "Ibinagsak niya nang pabigla ang mabigat na maleta sa sahig. (He plonked the heavy suitcase onto the floor.)"
+      },
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 a heavy dull sound of something dropping. 2 informal, cheap or inferior wine.",
+        "example_en": "The book landed with a loud plonk on the desk.",
+        "tagalog": ["kalabog", "bagsak"],
+        "example_tl": "Bumagsak ang libro nang may malakas na kalabog sa mesa. (The book landed on the desk with a loud plonk.)"
+      }
+    ],
+    "predisposition": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "A tendency or inclination to suffer from something or behave in a particular way.",
+        "example_en": "Some families share a genetic predisposition to heart disease.",
+        "tagalog": ["likas na hilig", "pagkahilig", "disposisyon"],
+        "example_tl": "May likas na hilig siyang maging mahinahon kahit sa oras ng krisis. (She has a natural predisposition to stay calm even in a crisis.)"
+      }
+    ],
+    "purveyor": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "A person or business that sells or supplies food, goods, or services.",
+        "example_en": "The shop is a longtime purveyor of fine coffee and pastries.",
+        "tagalog": ["tagapagtustos", "tagapaglaan", "suplayer"],
+        "example_tl": "Matagal nang tagapagtustos ng masarap na kape ang tindahang ito. (This shop has long been a purveyor of fine coffee.)"
+      }
+    ],
+    "rigmarole": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "A long, complicated, and annoying procedure or rambling story.",
+        "example_en": "We had to go through the whole rigmarole of filling out ten forms.",
+        "tagalog": ["pasikot-sikot", "mahabang seremonya", "abalang proseso"],
+        "example_tl": "Dumaan pa kami sa mahabang pasikot-sikot bago naaprubahan ang papel. (We had to go through a whole rigmarole before the paper was approved.)"
+      }
+    ],
+    "scrunch": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "To crush, crumple, or squeeze tightly into a smaller shape.",
+        "example_en": "She scrunched the paper into a tight ball.",
+        "tagalog": ["lukutin", "lamukusin", "pisilin"],
+        "example_tl": "Nilamukos niya ang papel hanggang maging bilog ito. (She scrunched the paper into a ball.)"
+      },
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "A crunching sound or crumpled state.",
+        "example_en": "Snow gave a loud scrunch under his boots.",
+        "tagalog": ["kaluskos", "paglamukos"],
+        "example_tl": "May malakas na kaluskos sa ilalim ng kanyang sapatos. (There was a loud scrunch under his shoes.)"
+      }
+    ],
+    "sheepish": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Showing embarrassment or shame because you have done something silly or wrong.",
+        "example_en": "He gave a sheepish grin after knocking over the glass.",
+        "tagalog": ["nahihiya", "kimi", "tila napahiya"],
+        "example_tl": "Ngumiti siya nang nahihiya matapos matabig ang baso. (He smiled sheepishly after knocking over the glass.)"
+      }
+    ],
+    "sprawl": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "1 to sit, lie, or fall with arms and legs spread out awkwardly. 2 to spread out over a wide area untidily.",
+        "example_en": "The tired dog sprawled across the cool floor.",
+        "tagalog": ["humandusay", "bumulagta", "kumalat"],
+        "example_tl": "Humandusay ang pagod na aso sa malamig na sahig. (The tired dog sprawled across the cool floor.)"
+      },
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "An untidy, irregular spread of buildings or limbs.",
+        "example_en": "Urban sprawl has reached the nearby farmland.",
+        "tagalog": ["pagkalat", "pagkahandusay"],
+        "example_tl": "Umabot na sa mga bukirin ang mabilis na pagkalat ng lungsod. (Urban sprawl has already reached the farmlands.)"
+      }
+    ],
+    "unabashed": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Not embarrassed, ashamed, or discouraged.",
+        "example_en": "She gave an unabashed cheer when her team scored.",
+        "tagalog": ["walang hiya-hiya", "tahasan", "hindi nahihiya"],
+        "example_tl": "Sumigaw siya nang walang hiya-hiya nang manalo ang kanyang koponan. (She gave an unabashed cheer when her team won.)"
+      }
+    ],
+    "vigorous": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "1 strong, healthy, and full of energy. 2 forceful and energetic.",
+        "example_en": "She shook her head vigorously when asked to agree.",
+        "tagalog": ["masigla", "malakas", "masigasig"],
+        "example_tl": "Masigla niyang iniling ang kanyang ulo nang tanungin siya. (She shook her head vigorously when asked.)"
+      }
+    ],
+    "agape": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Gaping, open-mouthed.",
+        "example_en": "The gaping audience.",
+        "tagalog": ["nakanganga", "nakatunganga", "nganga"],
+        "example_tl": "Nakatunganga lamang siya habang pinapanood ang palabas. (He simply stood agape while watching the show.)"
+      }
+    ],
+    "chime": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 set of attuned bells. 2 sounds made by this.",
+        "example_en": "The chimes of the old clock echoed down the hall.",
+        "tagalog": ["dupikal", "repike", "tunog ng kampana"],
+        "example_tl": "Umalingawngaw ang repike ng lumang orasan sa pasilyo. (The chimes of the old clock echoed down the hall.)"
+      },
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "1 to ring melodiously as a bell or chime. 2 to interrupt or join a conversation (chimed in).",
+        "example_en": "The bells and gongs chimed at midnight.",
+        "tagalog": ["tumunog", "kumalembang", "sumabat"],
+        "example_tl": "Tumunog ang mga kampana pagsapit ng hatinggabi. (The bells chimed at midnight.)"
+      }
+    ],
+    "contemplate": [
+      {
+        "pos": "verb",
+        "cefr": "C1",
+        "meaning": "To think about whether you should do something, or how you should do something.",
+        "example_en": "You're too young to be contemplating retirement.",
+        "tagalog": ["balakin", "magbalak", "pag-isipan", "dili-dilihin"],
+        "example_tl": "Bata ka pa para pag-isipan ang pagreretiro. (You're too young to be contemplating retirement.)"
+      }
+    ],
+    "derogatory": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Disparaging; insulting (derogatory remark).",
+        "example_en": "Derogatory comments.",
+        "tagalog": ["mapanlait", "mapanghamak", "nakasisira"],
+        "example_tl": "Nakakasakit ang kanyang mga mapanlait na salita. (His derogatory remarks are hurtful.)"
+      }
+    ],
+    "dignified": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Having or showing dignity.",
+        "example_en": "Her dignified demeanor.",
+        "tagalog": ["marangal", "kagalang-galang", "may dignidad"],
+        "example_tl": "Nanatili siyang marangal at mahinahon sa harap ng pagsubok. (She remained dignified and calm in the face of hardship.)"
+      }
+    ],
+    "dread": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "Fear greatly, especially in advance.",
+        "example_en": "I fear the winters in Moscow.",
+        "tagalog": ["katakutan", "pangambahan", "matakot"],
+        "example_tl": "Nang magkagayo'y sinabi ko sa inyo, Huwag kayong mangilabot ni matakot sa kanila. (Then I said unto you, Dread not, neither be afraid of them.)"
+      },
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "Great fear or apprehension.",
+        "example_en": "The student looked around the examination room with apprehension.",
+        "tagalog": ["lagim", "kalagiman", "hilakbot", "kahilakbutan"],
+        "example_tl": "Hindi ba kayo tatakutin ng kaniyang karilagan, at ang gulat sa kaniya ay sasa inyo? (Shall not his excellency make you afraid? and his dread fall upon you?)"
+      },
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "1 dreaded. 2 archaic awe-inspiring, dreadful.",
+        "example_en": "The awful war.",
+        "tagalog": ["nakakikilabot", "kagulat-gulat", "terible", "kasindak-sindak"],
+        "example_tl": "Ang Panginoon ng mga hukbo, siya ang inyong aariing banal; at sumakaniya ang inyong takot, at sumakaniya ang inyong pangingilabot. (Sanctify the Lord of hosts himself; and let him be your fear, and let him be your dread.)"
+      }
+    ],
+    "feasible": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Practicable, possible.",
+        "example_en": "Your plan sounds feasible enough to try.",
+        "tagalog": ["posible", "maaaring gawin", "maisasagawa"],
+        "example_tl": "Mukhang posible at maisasagawa ang iyong plano. (Your plan seems feasible and doable.)"
+      }
+    ],
+    "fire": [
+      {
+        "pos": "noun",
+        "cefr": "A1",
+        "meaning": "The flames, light and heat, and often smoke, that are produced when something burns.",
+        "example_en": "Don't forget to put out the fire.",
+        "tagalog": ["apoy", "sunog"],
+        "example_tl": "Huwag limuting patayin ang apoy."
+      },
+      {
+        "pos": "verb",
+        "cefr": "B1",
+        "meaning": "To shoot bullets, etc. from a gun or other weapon; to dismiss somebody from their job.",
+        "example_en": "The soldiers fired into the air as a warning.",
+        "tagalog": ["magpaputok", "paputukin", "sisantehin", "tanggalin"],
+        "example_tl": "Nagpaputok sa ere ang mga sundalo bilang babala. (The soldiers fired into the air as a warning.)"
+      }
+    ],
+    "glisten": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "Shine like a wet or polished surface.",
+        "example_en": "The doe's eyes glistened in the morning light.",
+        "tagalog": ["kuminang", "kumislap", "magningning", "sumikat"],
+        "example_tl": "Ang napakalayong araw ay sumikat nang mahina sa mga mayelong larang at kabundukan ng malayong Pluto. (The very distant sun shone faintly on the ice fields and mountains of faraway Pluto.)"
+      },
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "Glitter; sparkle.",
+        "example_en": "The doe's eyes glistened in the morning light.",
+        "tagalog": ["kislap", "ningning", "dabdab", "luningning"],
+        "example_tl": "Nagniningning ang mga bituin sa langit. (Stars shine above in the sky.)"
+      }
+    ],
+    "palpable": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "1 able to be touched or felt. 2 readily perceived.",
+        "example_en": "The tension in the room was palpable.",
+        "tagalog": ["madaling maramdaman", "kapansin-pansin", "malinaw"],
+        "example_tl": "Ramdam na ramdam ang tensiyon sa loob ng silid. (The tension inside the room was palpable.)"
+      }
+    ],
+    "perch": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 bar, branch, etc. used by a bird to rest on. 2 high place for a person or thing to rest on. 3 hist. measure of length, especially for land, of 51/2 yards.",
+        "example_en": "The bird hopped down from its high perch.",
+        "tagalog": ["dapuan", "sangang dapuan"],
+        "example_tl": "Lumapag ang ibon sa mataas na sangang dapuan nito. (The bird landed on its high perch.)"
+      },
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "Settle or rest on or as on a perch etc.",
+        "example_en": "The birds perched high in the tree.",
+        "tagalog": ["dumapo", "nakadapo", "humapon"],
+        "example_tl": "Dumapo ang mga ibon sa mataas na puno. (The birds perched high in the tree.)"
+      }
+    ],
+    "pique": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "Resentment; hurt pride.",
+        "example_en": "His temper sparked like damp firewood.",
+        "tagalog": ["pika", "hinanakit", "sama ng loob"],
+        "example_tl": "Umalis siya nang may sama ng loob dahil sa nangyari. (He left in a fit of pique over what happened.)"
+      },
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "1 to arouse interest or curiosity. 2 to offend or irritate someone's pride.",
+        "example_en": "The strange clue piqued her curiosity.",
+        "tagalog": ["pukawin", "inisin", "kilitiin ang interes"],
+        "example_tl": "Pinukaw ng kakaibang palatandaan ang kanyang pagkamausisa. (The strange clue piqued her curiosity.)"
+      }
+    ],
+    "pragmatic": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Dealing with matters from a practical point of view.",
+        "example_en": "A matter-of-fact (or pragmatic) approach to the problem.",
+        "tagalog": ["praktikal", "makatotohanan", "praktiko"],
+        "example_tl": "Kailangan natin ng praktikal na solusyon sa problemang ito. (We need a pragmatic solution to this problem.)"
+      }
+    ],
+    "pulsate": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "1 expand and contract rhythmically; throb. 2 vibrate, quiver, thrill.",
+        "example_en": "The city pulsated with music and excitement.",
+        "tagalog": ["tumibok", "pumintig"],
+        "example_tl": "Ang lungsod ay tumibok sa musika at kasabikan. (The city pulsated with music and excitement.)"
+      }
+    ],
+    "scowl": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "Severe frowning or sullen expression.",
+        "example_en": "He greeted the visitor with an angry scowl.",
+        "tagalog": ["simangot"],
+        "example_tl": "Sumimangot si Tom. (Tom frowned.)"
+      },
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "Make a scowl.",
+        "example_en": "She scowled at the noisy crowd outside.",
+        "tagalog": ["sumimangot", "simangutan"],
+        "example_tl": "Sumimangot siya nang makita ang magulong silid. (She scowled when she saw the messy room.)"
+      }
+    ],
+    "retort": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "Incisive, witty, or angry reply.",
+        "example_en": "It brought a sharp rejoinder from the teacher.",
+        "tagalog": ["pakli", "matalim na sagot"],
+        "example_tl": "Nagbigay siya ng mabilis at matalim na sagot sa paratang. (She gave a quick and sharp retort to the accusation.)"
+      },
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "1 say by way of a retort; make a retort. 2 repay (an insult or attack) in kind.",
+        "example_en": "She retorted angrily when blamed for the mistake.",
+        "tagalog": ["sumagot nang pabalang", "ipakli", "pumakli"],
+        "example_tl": "Sumagot siya nang pabalang nang sisihin siya sa pagkakamali. (She retorted angrily when blamed for the mistake.)"
+      }
+    ],
+    "square": [
+      {
+        "pos": "adjective",
+        "cefr": "A2",
+        "meaning": "Having four straight equal sides and four angles of 90°.",
+        "example_en": "A square has four angles.",
+        "tagalog": ["parisukat", "kuwadrado"],
+        "example_tl": "May apat na sulok ang parisukat."
+      },
+      {
+        "pos": "noun",
+        "cefr": "A2",
+        "meaning": "A shape with four straight sides of equal length and four angles of 90°; a piece of something that has this shape.",
+        "example_en": "Robert Hooke, a biologist from England, saw small squares in cork with a microscope.",
+        "tagalog": ["parisukat", "kuwadrado"],
+        "example_tl": "Nakita ni Robert Hooke, isang biologo mula sa Inglatera, ang mga maliliit na parisukat sa tapon gamit ang mikroskopyo."
+      },
+      {
+        "pos": "adverb",
+        "cefr": "",
+        "meaning": "1 squarely (hit me square on the jaw). 2 fairly, honestly.",
+        "example_en": "She faced the difficult problem squarely.",
+        "tagalog": ["nang tuwiran", "nang direkta", "nang parisukat"],
+        "example_tl": "Hinarap niya nang tuwiran ang mabigat na problema. (She faced the difficult problem squarely.)"
+      }
+    ],
+    "throb": [
+      {
+        "pos": "verb",
+        "cefr": "",
+        "meaning": "1 pulsate, especially with more than the usual force or rapidity. 2 vibrate with a persistent rhythm or with emotion.",
+        "example_en": "My head is throbbing.",
+        "tagalog": ["tumibok", "pumintig", "kumirot"],
+        "example_tl": "Tumitibok nang mabilis at kumikirot ang ulo ko. (My head is throbbing rapidly.)"
+      },
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 throbbing. 2 (especially violent) pulsation.",
+        "example_en": "I felt a throb in my head.",
+        "tagalog": ["pintig", "pulso", "kutog", "tibok"],
+        "example_tl": "Na ito'y hindi magiging kalumbayan sa iyo o kutog man ng loob sa aking panginoon, maging ikaw ay nagbubo ng dugo sa walang kabuluhan, o gumanti ng sa kaniyang sarili ang aking panginoon: at pagka gumawa ang Panginoon ng mabuti sa aking panginoon, alalahanin mo nga ang iyong lingkod. (That this shall be no grief unto thee, nor offence of heart unto my lord, either that thou hast shed blood causeless, or that my lord hath avenged himself: but when the Lord shall have dealt well with my lord, then remember thine handmaid.)"
+      }
+    ],
+    "tutelage": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 guardianship or protection. 2 instruction or guidance under a tutor.",
+        "example_en": "Under her teacher's tutelage, she quickly mastered the piano.",
+        "tagalog": ["paggabay", "pag-aalaga", "pagtuturo"],
+        "example_tl": "Sa ilalim ng paggabay ng kanyang guro, mabilis siyang natuto. (Under her teacher's tutelage, she learned quickly.)"
+      }
+    ],
+    "yelp": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "Sharp shrill cry as of a dog in pain or excitement.",
+        "example_en": "The yelp pierced the silent night sky and made its way through the streets of Chicago.",
+        "tagalog": ["tili", "matinis na tahol"],
+        "example_tl": "Nakarinig kami ng matinis na tili ng aso mula sa labas. (We heard a sharp yelp from a dog outside.)"
+      }
+    ],
+    "betterment": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 the act or process of making something or someone better; improvement. 2 in law, an improvement that adds value to property.",
+        "example_en": "The new library was built for the betterment of the town.",
+        "tagalog": ["pagpapabuti", "ikabubuti", "pagpapahusay"],
+        "example_tl": "Ipinatayo ang bagong aklatan para sa ikabubuti ng bayan. (The new library was built for the betterment of the town.)"
+      }
+    ],
+    "aide": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "A person who helps a more senior official, officer, or politician with their work.",
+        "example_en": "The president's aide briefed the reporters before the speech.",
+        "tagalog": ["ayudante", "alalay", "asistente"],
+        "example_tl": "Nagbigay ng maikling ulat ang alalay ng pangulo sa mga mamamahayag bago ang talumpati. (The president's aide briefed the reporters before the speech.)"
+      }
+    ],
+    "hypothetical": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "Based on a suggested idea or imagined situation rather than on proven facts; supposed but not necessarily real.",
+        "example_en": "They argued from a hypothetical example, not from what had actually happened.",
+        "tagalog": ["ipotetikal", "hipotetikal", "ipinapalagay"],
+        "example_tl": "Nagtalo sila mula sa isang ipotetikal na halimbawa, hindi mula sa tunay na nangyari. (They argued from a hypothetical example, not from what had actually happened.)"
+      },
+      {
+        "pos": "adverb",
+        "cefr": "",
+        "meaning": "Used as hypothetically: as a possibility assumed for the sake of argument, not as a proven fact.",
+        "example_en": "Hypothetically, she could finish the work in a week if nothing else came up.",
+        "tagalog": ["kung ipapalagay", "nang ipotetikal", "ayon sa palagay"],
+        "example_tl": "Kung ipapalagay, matatapos niya ang trabaho sa isang linggo kung walang sagabal. (Hypothetically, she could finish the work in a week if nothing else came up.)"
+      }
+    ],
+    "enclave": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 a territory of one country or group that is completely surrounded by another. 2 a distinct community or area that keeps its own character inside a larger one.",
+        "example_en": "Vatican City and San Marino are enclaves surrounded by Italy.",
+        "tagalog": ["enklabe", "napapalibutang lupain", "hiwalay na pamayanan"],
+        "example_tl": "Ang Lungsod ng Vaticano at ang San Marino ay mga enklabe na napapalibutan ng Italya. (Vatican City and San Marino are enclaves surrounded by Italy.)"
+      }
+    ],
+    "fiefdom": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "An area, office, or group that one person controls as if it were a private domain.",
+        "example_en": "The officials treated their offices like personal fiefdoms.",
+        "tagalog": ["nasasakupan", "sakop", "saklaw"],
+        "example_tl": "Tinuring ng mga opisyal ang kanilang mga tanggapan na parang sariling nasasakupan. (The officials treated their offices like personal fiefdoms.)"
+      },
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "Historically, a fief: land granted by a lord to a vassal in return for loyalty and service.",
+        "example_en": "Medieval lords granted fiefdoms to vassals who promised military service.",
+        "tagalog": ["piyudo", "lupaing ipinagkaloob", "lupang piyudal"],
+        "example_tl": "Noong Gitnang Panahon, nagkaloob ang mga panginoon ng mga piyudo sa mga basalyong nangakong maglingkod sa hukbo. (Medieval lords granted fiefdoms to vassals who promised military service.)"
+      }
+    ]
+  },
+  "synonyms": {
+    "aides": ["aide"],
+    "befuddled": ["befuddle"],
+    "befuddles": ["befuddle"],
+    "befuddling": ["befuddle"],
+    "betterments": ["betterment"],
+    "chimed": ["chime"],
+    "coercing": ["coerce"],
+    "deemed": ["deem"],
+    "disdainfully": ["disdainful"],
+    "dratted": ["drat"],
+    "dratting": ["drat"],
+    "dreading": ["dread"],
+    "enclaves": ["enclave"],
+    "fiefdoms": ["fiefdom"],
+    "glistened": ["glisten"],
+    "hordes": ["horde"],
+    "huffily": ["huffy"],
+    "hypothetic": ["hypothetical"],
+    "hypothetically": ["hypothetical"],
+    "kowtowed": ["kowtow"],
+    "kowtowing": ["kowtow"],
+    "kowtows": ["kowtow"],
+    "morsels": ["morsel"],
+    "muttered": ["mutter"],
+    "perched": ["perch"],
+    "piqued": ["pique"],
+    "plonked": ["plonk"],
+    "plonking": ["plonk"],
+    "plonks": ["plonk"],
+    "pragmatically": ["pragmatic"],
+    "predispositions": ["predisposition"],
+    "pulsating": ["pulsate"],
+    "purveyors": ["purveyor"],
+    "retorted": ["retort"],
+    "rigmaroles": ["rigmarole"],
+    "scowled": ["scowl"],
+    "scrunched": ["scrunch"],
+    "scrunches": ["scrunch"],
+    "scrunching": ["scrunch"],
+    "sheepishly": ["sheepish"],
+    "sprawled": ["sprawl"],
+    "sprawling": ["sprawl"],
+    "sprawls": ["sprawl"],
+    "squarely": ["square"],
+    "throbbed": ["throb"],
+    "unabashedly": ["unabashed"],
+    "vigorously": ["vigorous"]
+  }
+}

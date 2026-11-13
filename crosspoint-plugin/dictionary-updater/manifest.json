@@ -1,0 +1,4 @@
+{
+  "title": "Oxford English-Tagalog Dictionary Updater",
+  "description": "Computer-side plugin to patch/rebuild the oxford-en-tl/ StarDict index when you add new words."
+}

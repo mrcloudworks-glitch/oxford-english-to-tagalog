@@ -1,0 +1,22 @@
+{
+  "title": "Oxford English-Tagalog Dictionary",
+  "description": "Browse and download dictionary updates from GitHub to your SD card (/dictionaries/oxford-en-tl/). No computer needed.",
+  "browse": {
+    "format": "json",
+    "url": "https://api.github.com/repos/mrcloudworks-glitch/oxford-english-to-tagalog/contents/oxford-en-tl?ref=arena/0bd07e97-oxford-english-to-tagalog",
+    "method": "GET",
+    "items": "",
+    "fields": {
+      "title": "name",
+      "url": "download_url",
+      "size": "size",
+      "type": "type"
+    },
+    "page_size": 16
+  },
+  "download": {
+    "url": "{url}",
+    "dest_dir": "/dictionaries/oxford-en-tl",
+    "filename": "{title}"
+  }
+}

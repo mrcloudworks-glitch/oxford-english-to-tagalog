@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+
+# Stale build output (dictionary now lives in tracked oxford-en-tl/)
+dictionaries/
