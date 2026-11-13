@@ -525,12 +525,72 @@
         "tagalog": ["tili", "matinis na tahol"],
         "example_tl": "Nakarinig kami ng matinis na tili ng aso mula sa labas. (We heard a sharp yelp from a dog outside.)"
       }
+    ],
+    "aide": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 a person whose job is to help someone important, such as a government official, an officer, or a leader. 2 in the US, a person who assists a teacher or a nurse.",
+        "example_en": "The president met with his senior aides before the announcement.",
+        "tagalog": ["katulong", "kasangga", "katuwang", "alalay"],
+        "example_tl": "Nakipagpulong ang pangulo sa kanyang mga mataas na katulong bago ang anunsyo. (The president met with his senior aides before the announcement.)"
+      }
+    ],
+    "betterment": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "The act or process of improving something; the state of being made better, especially a person's character, condition, or standard of living.",
+        "example_en": "The new program aims at the betterment of the whole community.",
+        "tagalog": ["pagpapabuti", "pagbubuti", "pag-unlad"],
+        "example_tl": "Layunin ng bagong programa ang pagpapabuti ng buong komunidad. (The new program aims at the betterment of the whole community.)"
+      }
+    ],
+    "enclave": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "A country, area, or group of people that is surrounded by, or is very different from, the country, area, or people around it.",
+        "example_en": "The old town remained a quiet enclave in the middle of the busy city.",
+        "tagalog": ["enklabe", "nakapaloob na teritoryo", "hiwalay na pamayanan"],
+        "example_tl": "Ang lumang bayan ay nanatiling tahimik na enklabe sa gitna ng abalang lungsod. (The old town remained a quiet enclave in the middle of the busy city.)"
+      }
+    ],
+    "fiefdom": [
+      {
+        "pos": "noun",
+        "cefr": "",
+        "meaning": "1 an area of land controlled by a lord under the feudal system; a fief. 2 disapproving: an organization, department, or business that one person controls completely and does not allow others to influence.",
+        "example_en": "Each manager guarded his own fiefdom and shared nothing with the others.",
+        "tagalog": ["pyudo", "lupang sakop", "personal na nasasakupan"],
+        "example_tl": "Iniingatan ng bawat manedyer ang sarili niyang lupang sakop at walang ibinahagi sa iba. (Each manager guarded his own fiefdom and shared nothing with the others.)"
+      }
+    ],
+    "hypothetical": [
+      {
+        "pos": "adjective",
+        "cefr": "",
+        "meaning": "1 based on or involving an idea or a suggested situation that has not been proved or has not yet happened; supposed rather than actual. 2 of a question: asked to make people think or to discuss possibilities.",
+        "example_en": "Let's consider a hypothetical case where the market crashes tomorrow.",
+        "tagalog": ["batay sa palagay", "hipotetikal", "kathang-isip"],
+        "example_tl": "Isipin natin ang isang kathang-isip na sitwasyon kung saan biglang bumagsak ang merkado bukas. (Let's consider a hypothetical case where the market crashes tomorrow.)"
+      },
+      {
+        "pos": "adverb",
+        "cefr": "",
+        "meaning": "Used as hypothetically: in a way based on an imagined situation or possibility rather than on facts.",
+        "example_en": "Hypothetically, we could finish by Friday if nothing goes wrong.",
+        "tagalog": ["kung sakali", "sa palagay", "batay sa palagay"],
+        "example_tl": "Kung sakali, matatapos natin ito bago mag-Biyernes kung walang magiging problema. (Hypothetically, we could finish by Friday if nothing goes wrong.)"
+      }
     ]
   },
   "synonyms": {
+    "aides": ["aide"],
     "befuddled": ["befuddle"],
     "befuddles": ["befuddle"],
     "befuddling": ["befuddle"],
+    "betterments": ["betterment"],
     "chimed": ["chime"],
     "coercing": ["coerce"],
     "deemed": ["deem"],
@@ -538,9 +598,13 @@
     "dratted": ["drat"],
     "dratting": ["drat"],
     "dreading": ["dread"],
+    "enclaves": ["enclave"],
+    "fiefdoms": ["fiefdom"],
     "glistened": ["glisten"],
     "hordes": ["horde"],
     "huffily": ["huffy"],
+    "hypothetically": ["hypothetical"],
+    "hypotheticals": ["hypothetical"],
     "kowtowed": ["kowtow"],
     "kowtowing": ["kowtow"],
     "kowtows": ["kowtow"],
