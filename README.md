@@ -47,6 +47,37 @@ Notes for CrossPoint:
 - Inflected forms, irregular plurals/past tenses/comparatives (`.exc`), and UK↔US spelling variants (`colour` ↔ `color`, `tyre` ↔ `tire`, `went` → `go`, `children` → `child`) are indexed in `oxford-en-tl.syn` for instant lookup even where CrossPoint's built-in `stemVariants()` stops.
 - If your device ever runs low on RAM decompressing `.dict.dz` chunks, you can decompress `oxford-en-tl.dict.dz` to `oxford-en-tl.dict` (`gzip -d -c oxford-en-tl.dict.dz > oxford-en-tl.dict`) and remove the `.dict.dz` file.
 
+## Online updates — no SD card removal needed
+
+The updater plugin (`crosspoint-plugin/dictionary-updater/device.json`) lets your CrossPoint reader browse and download dictionary updates directly from GitHub over WiFi, so you never have to move the SD card to a computer:
+
+1. On the reader: **Settings → System → Plugins → Oxford English-Tagalog Dictionary**.
+2. Browse the files in `oxford-en-tl/` (pulled from your GitHub branch).
+3. Select a file → **Download**. It saves to `/dictionaries/oxford-en-tl/` on the SD card.
+4. Open **Settings → Reader → Dictionary → Oxford**. On the next lookup CrossPoint rebuilds its `.qidx` sidecar automatically — the new words are searchable.
+
+The plugin reads `https://api.github.com/repos/mrcloudworks-glitch/oxford-english-to-tagalog/contents/oxford-en-tl?ref=arena/09121263-oxford-english-to-tagalog` (public, no login required).
+
+### Publishing an update from your computer
+
+When you add new words locally:
+
+```bash
+# 1. Add the word to the curated updates list
+#    edit crosspoint-plugin/dictionary-updater/curated_updates.json
+
+# 2. Patch & rebuild the dictionary binaries locally
+python3 crosspoint-plugin/dictionary-updater/build_dictionary.py --patch-existing
+python3 crosspoint-plugin/dictionary-updater/validate_stardict.py oxford-en-tl
+
+# 3. Push the updated oxford-en-tl/ binaries to GitHub
+git add oxford-en-tl/
+git commit -m "Update dictionary with new words"
+git push origin arena/09121263-oxford-english-to-tagalog
+```
+
+Then pull the update on the reader via the plugin (step 1–3 above) — no SD card removal.
+
 ## Format & Firmware Compliance
 
 Verified against CrossPoint's StarDict & DictZip implementation (`Dictionary.cpp`, `DictZip.cpp`, `StringUtils::asciiCaseCmp`):
