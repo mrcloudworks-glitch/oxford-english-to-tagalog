@@ -1,88 +1,81 @@
-# oxford-english-to-tagalog
+# Oxford English-to-Tagalog Dictionary for CrossPoint Reader
 
-Computer-side "plugin/patch" for **CrossPoint** on the **Xteink X3 / X4**:
-rebuild the StarDict dictionary index automatically whenever you add new
-words to your English → Tagalog word list.
+An offline StarDict (`sametypesequence=h`) **English → English → Tagalog** dictionary built specifically for [CrossPoint e-reader](https://github.com/crosspoint-reader/crosspoint-reader) firmware.
 
-## What this is
+Every headword entry combines an Oxford English meaning with ranked Tagalog translations and bilingual usage examples:
 
-CrossPoint 1.5+ supports offline StarDict dictionaries stored on the SD card
-(`/dictionaries/<name>/` with `.dict`, `.idx` and optional `.ifo`), and it
-rebuilds its own fast `.qidx` sidecar automatically whenever `.idx` changes.
-There is no on-device compiler plugin needed — CrossPoint's plugin surface is
-declarative (catalogs/downloads) or browser UI, and the reader picks up index
-changes by itself. What *is* needed is a tool that turns your editable word
-list into StarDict files and rebuilds them when you add a word. That is what
-this repo provides.
-
-```
-dictionary/oxford-en-tl.txt   <- edit this; add words (word<TAB>tagalog)
-scripts/build_oxford_dict.py  <- builds dictionaries/Oxford/*.{dict,idx,ifo}
-scripts/watch_oxford_dict.py  <- watches the list; rebuilds (+ syncs to SD)
-scripts/sync_to_sd.py         <- one-shot copy to the SD card
-dictionaries/Oxford/          <- generated StarDict files (gitignored)
+```text
+book (noun, A1)
+Meaning: A set of printed pages that are fastened inside a cover so that you can turn them and read them.
+Example: Could I go play after reading this book?
+Tagalog: libro, aklat
+Tagalog example: Puwede ba akong maglaro pagkatapos basahin itong libro?
+────────────────────────────────────────
+book (verb, A2)
+Meaning: To arrange to have or use something on a particular date in the future; to buy a ticket in advance.
+Example: He took a book off the shelf.
+Tagalog: magreserba, ireserba, ipagreserba
+Tagalog example: Kumuha siya ng libro sa aklatan.
 ```
 
-## Quick start
+## Dictionary Coverage & Stats
 
-### 1. On the device (Xteink X3 / X4 with CrossPoint 1.5+)
+| Metric | Count |
+| --- | ---: |
+| Headwords (`.idx`) | 16,515 |
+| Oxford 5000 core entries (with CEFR level) | 4,727 |
+| Synonym / inflection / UK↔US mappings (`.syn`) | 33,761 |
+| Entries with English usage example | 12,776 |
+| Entries with Tagalog usage example | 11,766 |
+| Entries with all 5 fields | 10,351 |
+| Compressed dictionary size (`oxford-en-tl.dict.dz`) | 2.26 MB (7.18 MB raw) |
 
-- Copy `dictionaries/Oxford/` to `/dictionaries/Oxford/` on the microSD card.
-- **Settings → Reader → Dictionary** → select **Oxford**.
-- Look up while reading: reader menu → **Look Up**, or long-press **Menu**
-  when set to "Dictionary".
+## Installing on CrossPoint Reader
 
-### 2. On your computer
+Copy the **`oxford-en-tl/`** folder onto your CrossPoint SD card under `/dictionaries/`:
 
-```sh
-# add a new word to the list
-echo 'newword\tbago' >> dictionary/oxford-en-tl.txt
-
-# rebuild the StarDict files
-python3 scripts/build_oxford_dict.py
-
-# copy to the SD card (adjust the mount point)
-python3 scripts/sync_to_sd.py /media/$USER/XTEINK
+```text
+/dictionaries/oxford-en-tl/
+├── oxford-en-tl.dict.dz
+├── oxford-en-tl.idx
+├── oxford-en-tl.ifo
+└── oxford-en-tl.syn
 ```
 
-The reader re-indexes automatically on the next lookup — no restart needed.
+Notes for CrossPoint:
+- Keep **only one** `.idx` file inside `/dictionaries/oxford-en-tl/` and keep the stem path under 151 characters (CrossPoint requirement).
+- Inflected forms, irregular plurals/past tenses/comparatives (`.exc`), and UK↔US spelling variants (`colour` ↔ `color`, `tyre` ↔ `tire`, `went` → `go`, `children` → `child`) are indexed in `oxford-en-tl.syn` for instant lookup even where CrossPoint's built-in `stemVariants()` stops.
+- If your device ever runs low on RAM decompressing `.dict.dz` chunks, you can decompress `oxford-en-tl.dict.dz` to `oxford-en-tl.dict` (`gzip -d -c oxford-en-tl.dict.dz > oxford-en-tl.dict`) and remove the `.dict.dz` file.
 
-### 3. Auto-rebuild on every save
+## Format & Firmware Compliance
 
-```sh
-python3 scripts/watch_oxford_dict.py --sd /media/$USER/XTEINK
+Verified against CrossPoint's StarDict & DictZip implementation (`Dictionary.cpp`, `DictZip.cpp`, `StringUtils::asciiCaseCmp`):
+- `version=2.4.2`, 32-bit offsets (no `idxoffsetbits=64`), `sametypesequence=h` (clean HTML using `<p>`, `<b>`, `<i>`, `<hr>` — zero IPA/UTF-8 glyphs missing from CrossPoint's built-in fonts).
+- `.idx` and `.syn` keys strictly sorted by ASCII case-insensitive byte order (`asciiCaseCmp`), with case-folded duplicates merged onto single entries and 0-based `.syn` ordinals.
+- `oxford-en-tl.dict.dz` compressed in independent 58,315-byte raw-deflate chunks (`Z_FULL_FLUSH`, `wbits=-15`, 124 chunks) with a standard DictZip `RA` extra field table for fast random-access extraction.
+
+## Rebuilding & Validating (dictionary updater plugin)
+
+The updater lives in `crosspoint-plugin/dictionary-updater/` (separate from the compiled dictionary in `oxford-en-tl/`). `build_dictionary.py` supports patching an existing `oxford-en-tl/` dictionary with `curated_updates.json`, or performing a full rebuild from source datasets under `/tmp/research` (or pass `--sources-dir <path>`):
+
+```bash
+# Apply curated_updates.json directly onto existing oxford-en-tl/ binaries
+python3 crosspoint-plugin/dictionary-updater/build_dictionary.py --patch-existing
+
+# Preview specific headwords without writing StarDict files
+python3 crosspoint-plugin/dictionary-updater/build_dictionary.py --preview abandon book bear tyre
+
+# Full rebuild of oxford-en-tl/ from source corpora
+python3 crosspoint-plugin/dictionary-updater/build_dictionary.py
+
+# Validate StarDict & DictZip binaries against CrossPoint invariants
+python3 crosspoint-plugin/dictionary-updater/validate_stardict.py oxford-en-tl
 ```
 
-Keeps `dictionaries/Oxford/` and the SD card copy in sync as you edit.
+To add a new word, edit `crosspoint-plugin/dictionary-updater/curated_updates.json`, run `--patch-existing`, then copy the updated `oxford-en-tl/` folder to your SD card under `/dictionaries/oxford-en-tl/`. CrossPoint rebuilds its `.qidx` sidecar automatically on the next lookup.
 
-## File layout on the SD card
+## Sources
 
-```
-/dictionaries/Oxford/
-  oxford-en-tl.dict   definition data
-  oxford-en-tl.idx    word index (uncompressed, required)
-  oxford-en-tl.ifo    metadata (optional)
-.qidx                 rebuilt by CrossPoint automatically (sidecar)
-```
-
-Folder name `Dictionaries`/`dictionaries` is case-sensitive on some setups —
-use exactly `dictionaries` with one dictionary per folder; folders with more
-than one `.idx` stem are skipped as ambiguous.
-
-## StarDict format notes (CrossPoint-compatible)
-
-- `.idx` records: NUL-terminated headword + **big-endian 32-bit** offset +
-  **big-endian 32-bit** size, sorted case-insensitively (ASCII). Matches
-  `Dictionary::locate` in crosspoint-reader.
-- `.dict` holds plain-text definition blobs (uncompressed; `.dict.dz` also
-  accepted by CrossPoint).
-- `.ifo` written with `wordcount`, `idxfiles`, `idxfiles_bitsize: 0`.
-- No 64-bit offsets (`idxoffsetbits=64` is rejected by the reader).
-
-## Dictionary content
-
-The starter list in `dictionary/oxford-en-tl.txt` was written for this
-project — it is **not** the copyrighted Oxford dictionary. Add, edit, or
-remove entries freely; the build script deduplicates and sorts automatically.
-
-CrossPoint source: https://github.com/PilotConway/crosspoint-reader
+- **English Headwords, Meanings, & CEFR**: Oxford 5000 (`oxford-5000-vocabulary-audio-definition`, `Oxford-5000-words`), Concise Oxford English Dictionary (`sujithps/Dictionary`, `Oxford-English-Dictionary-41K-words`), with Wordset Dictionary and NLTK WordNet 3.0 example fallbacks.
+- **Tagalog Translations**: Cross-referenced & frequency-ranked across Filipino WordNet (`Filipino-WordNet`), Tagalog Wiktionary (`Wiktionary-Dictionaries`), PinoyDictionary (`tgl-dictionary-parser`, `pinoy-dictionary-scraper`), `english-tagalog-vocab`, and `LearnTagalogApp`, using `tgl_freqlist.csv` and WordNet 3.0 POS/synset disambiguation.
+- **Parallel English–Tagalog Example Sentences**: Tatoeba Challenge `eng-tgl`, FloRes200 `eng-tgl`, `LearnTagalogApp`, and `Digi-bible` (KJV ↔ Ang Dating Biblia).
