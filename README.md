@@ -29,6 +29,7 @@ Tagalog example: Kumuha siya ng libro sa aklatan.
 | Entries with Tagalog usage example | 11,771 |
 | Entries with all 5 fields | 10,356 |
 | Compressed dictionary size (`oxford-en-tl.dict.dz`) | 2.26 MB (7.19 MB raw) |
+| Published build manifest (`update.json`) | sha256 + sizes of all 4 binaries |
 
 ## Installing on CrossPoint Reader
 
@@ -39,7 +40,8 @@ Copy the **`oxford-en-tl/`** folder onto your CrossPoint SD card under `/diction
 ├── oxford-en-tl.dict.dz
 ├── oxford-en-tl.idx
 ├── oxford-en-tl.ifo
-└── oxford-en-tl.syn
+├── oxford-en-tl.syn
+└── update.json          # optional build info (word counts, sizes); ignored by lookups
 ```
 
 Notes for CrossPoint:
@@ -49,34 +51,41 @@ Notes for CrossPoint:
 
 ## Online updates — no SD card removal needed
 
-The updater plugin (`crosspoint-plugin/dictionary-updater/device.json`) lets your CrossPoint reader browse and download dictionary updates directly from GitHub over WiFi, so you never have to move the SD card to a computer:
+The updater plugin (`crosspoint-plugin/dictionary-updater/device.json`) lets your CrossPoint reader browse and download dictionary updates directly from this repository's [`oxford-en-tl/`](https://github.com/mrcloudworks-glitch/oxford-english-to-tagalog/tree/main/oxford-en-tl) folder over Wi-Fi, so you never have to move the SD card to a computer:
 
-1. On the reader: **Settings → System → Plugins → Oxford English-Tagalog Dictionary**.
-2. Browse the files in `oxford-en-tl/` (pulled from your GitHub branch).
-3. Select a file → **Download**. It saves to `/dictionaries/oxford-en-tl/` on the SD card.
-4. Open **Settings → Reader → Dictionary → Oxford**. On the next lookup CrossPoint rebuilds its `.qidx` sidecar automatically — the new words are searchable.
+1. On the reader: **Settings → Connectivity → Plugins → Enabled**.
+2. Open **Home → Plugins → Oxford English-Tagalog**.
+3. Pick a file → **Download**. It saves to `/dictionaries/oxford-en-tl/` on the SD card. Download `oxford-en-tl.dict.dz` before `oxford-en-tl.idx` so the new index never points at definitions the reader does not have yet.
+4. Open **Settings → Reader → Dictionary → Oxford**. On the next lookup CrossPoint rebuilds its `.qidx` / `.sidx` sidecars automatically — the new words are searchable.
 
-The plugin reads `https://api.github.com/repos/mrcloudworks-glitch/oxford-english-to-tagalog/contents/oxford-en-tl?ref=arena/09121263-oxford-english-to-tagalog` (public, no login required).
+The plugin reads `https://api.github.com/repos/mrcloudworks-glitch/oxford-english-to-tagalog/contents/oxford-en-tl?ref=main` (public, no login required), so whatever is committed to `oxford-en-tl/` on `main` is what readers receive. Plugin support requires CrossPoint 2.0.0 or newer.
 
 ### Publishing an update from your computer
 
-When you add new words locally:
+When you add new words locally, one helper does the whole publish loop:
 
 ```bash
 # 1. Add the word to the curated updates list
 #    edit crosspoint-plugin/dictionary-updater/curated_updates.json
 
-# 2. Patch & rebuild the dictionary binaries locally
-python3 crosspoint-plugin/dictionary-updater/build_dictionary.py --patch-existing
-python3 crosspoint-plugin/dictionary-updater/validate_stardict.py oxford-en-tl
+# 2. Patch + rebuild, validate, and refresh oxford-en-tl/update.json
+python3 crosspoint-plugin/dictionary-updater/update_dictionary.py build
 
-# 3. Push the updated oxford-en-tl/ binaries to GitHub
-git add oxford-en-tl/
-git commit -m "Update dictionary with new words"
-git push origin arena/09121263-oxford-english-to-tagalog
+# 3. Commit and push the updated oxford-en-tl/ folder to main
+python3 crosspoint-plugin/dictionary-updater/update_dictionary.py publish --apply
 ```
 
+`publish` checks the build against `update.json` and `validate_stardict.py` first, and prints the git commands instead of running them unless you pass `--apply`.
+
 Then pull the update on the reader via the plugin (step 1–3 above) — no SD card removal.
+
+```bash
+# What is local, what is published, and what GitHub serves right now
+python3 crosspoint-plugin/dictionary-updater/update_dictionary.py status --online
+
+# Confirm the ref in device.json still serves the dictionary
+python3 crosspoint-plugin/dictionary-updater/update_dictionary.py check-ref
+```
 
 ## Format & Firmware Compliance
 

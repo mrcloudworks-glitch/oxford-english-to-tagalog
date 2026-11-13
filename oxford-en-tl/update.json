@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "name": "Oxford English-English-Tagalog Dictionary",
+  "headwords": 16520,
+  "synonyms": 33767,
+  "sametypesequence": "h",
+  "source": {
+    "repository": "https://github.com/mrcloudworks-glitch/oxford-english-to-tagalog",
+    "browse_url": "https://api.github.com/repos/mrcloudworks-glitch/oxford-english-to-tagalog/contents/oxford-en-tl?ref=main",
+    "download_url": "https://api.github.com/repos/mrcloudworks-glitch/oxford-english-to-tagalog/contents/oxford-en-tl/{title}?ref=main"
+  },
+  "files": {
+    "oxford-en-tl.dict.dz": {
+      "size": 2261895,
+      "sha256": "27a707b0f16ad2f99a7392c0baefef8f2aac6baa478c1231d9e48f1940cf6e77"
+    },
+    "oxford-en-tl.idx": {
+      "size": 271302,
+      "sha256": "3d0f83dd4260ddf47ebaf25d270b6aefe1735620459f88f8e62dcd87190783a0"
+    },
+    "oxford-en-tl.ifo": {
+      "size": 163,
+      "sha256": "d9a2ed2a34a3e5d31d3b791818e9ec983230a8208cd1f29aedff176d2c1e5b61"
+    },
+    "oxford-en-tl.syn": {
+      "size": 475876,
+      "sha256": "0c465818072de51c56b0d1b7660a87e0ba203a0ba69899802dd0012ef459f83f"
+    }
+  }
+}
