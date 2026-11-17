@@ -22,12 +22,12 @@ Tagalog example: Kumuha siya ng libro sa aklatan.
 
 | Metric | Count |
 | --- | ---: |
-| Headwords (`.idx`) | 16,520 |
-| Oxford 5000 core entries (with CEFR level) | 4,727 |
-| Synonym / inflection / UK↔US mappings (`.syn`) | 33,767 |
-| Entries with English usage example | 12,781 |
-| Entries with Tagalog usage example | 11,771 |
-| Entries with all 5 fields | 10,356 |
+| Headwords (`.idx`) | 16,521 |
+| Oxford 5000 core entries (with CEFR level) | 4,732 |
+| Synonym / inflection / UK↔US mappings (`.syn`) | 33,813 |
+| Entries with English usage example | 12,782 |
+| Entries with Tagalog usage example | 11,776 |
+| Entries with all 5 fields | 10,361 |
 | Compressed dictionary size (`oxford-en-tl.dict.dz`) | 2.26 MB (7.19 MB raw) |
 | Published build manifest (`update.json`) | sha256 + sizes of all 4 binaries |
 
